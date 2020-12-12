@@ -10,13 +10,13 @@ const { connections } = require('mongoose');
 const { connection } = require('./connector')
 
 app.get('/findColleges', async (req,res)=>{
-    let name1 = req.query.name;
-    let state1= req.query.state;
-    let city1=req.query.city;
-    let course1 = req.query.course;
-    let exams1 = req.query.exams;
-    let minPackage1 = req.query.minPackage;
-    let maxFees1 = req.query.maxFees;
+    let name1 = req.query.name?req.query.name:"";
+    let state1= req.query.state?req.query.state:"";
+    let city1=req.query.city?req.query.city:"";
+    let course1 = req.query.course?req.query.course:"";
+    let exams1 = req.query.exams? req.query.exams:"";
+    let minPackage1 = req.query.minPackage?req.query.minPackage:"";
+    let maxFees1 = req.query.maxFees? req.query.maxFees:"";
     try{
         if(Number(minPackage1)>0 && Number(maxFees1)>0)
         {   

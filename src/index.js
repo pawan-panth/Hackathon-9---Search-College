@@ -14,7 +14,7 @@ app.get("/findColleges", async (req,res)=>{
     let state1= req.query.state?req.query.state:".*";
     let city1=req.query.city?req.query.city:".*";
     let course1 = req.query.course?req.query.course:".*";
-    let exams1 = req.query.exams? `^${req.query.exams}$`:".*";
+    let exams1 = req.query.exams?req.query.exams:".*";
     let minPackage1 = req.query.minPackage?Number(req.query.minPackage):".*";
     let maxFees1 = req.query.maxFees? Number(req.query.maxFees):".*";
     if(minPackage1>0 && maxFees1>0)
@@ -25,9 +25,12 @@ app.get("/findColleges", async (req,res)=>{
                             $and: [
                                 {name : new RegExp(name1,'i')},
                                 {state: new RegExp(state1,'i')},
+                                
                                 {city: new RegExp(city1,'i')},
                                 {course:new RegExp(course1,'i')},
-                                {exam: new RegExp(exams1,'i')},
+                                {$expr: {$in:[exams1,"$exam"]}},
+                                // {$expr: {$in:[exams1,"$exam"]}},
+                                // {exam: new RegExp(exams1,'i')},
                             ]          
                         }
                 },
@@ -66,7 +69,9 @@ app.get("/findColleges", async (req,res)=>{
                                     {state: new RegExp(state1,'i')},
                                     {city: new RegExp(city1,'i')},
                                     {course:new RegExp(course1,'i')},
-                                    {exam: new RegExp(exams1,'i')},
+                                    {$expr: {$in:[exams1,"$exam"]}},
+                                    // {$expr: {$in:[ new RegExp(exams1,'i'),"$exam"]}},
+                                    // {exam: new RegExp(exams1,'i')},
                                 ]          
                             }
                     },
@@ -99,7 +104,9 @@ app.get("/findColleges", async (req,res)=>{
                                 {state: new RegExp(state1,'i')},
                                 {city: new RegExp(city1,'i')},
                                 {course:new RegExp(course1,'i')},
-                                {exam: new RegExp(exams1,'i')},
+                                {$expr: {$in:[exams1,"$exam"]}},
+                                // {$expr: {$in:[ new RegExp(exams1,'i'),"$exam"]}},
+                                // {exam: new RegExp(exams1,'i')},
                             ]          
                         }
                 },
@@ -133,7 +140,8 @@ app.get("/findColleges", async (req,res)=>{
                                 {state: new RegExp(state1,'i')},
                                 {city: new RegExp(city1,'i')},
                                 {course:new RegExp(course1,'i')},
-                                {exam: new RegExp(exams1,'i')},
+                                {$expr: {$in:[exams1,"$exam"]}},
+                                // {exam: new RegExp(exams1,'i')},
                             ]          
                         }
                     },
@@ -144,7 +152,7 @@ app.get("/findColleges", async (req,res)=>{
                         }
                     }
                 ]);
-                console.log("none");
+                // console.log(req.query.exams);
                 res.send(found);
             } 
 

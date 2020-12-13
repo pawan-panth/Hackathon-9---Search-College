@@ -26,7 +26,7 @@ app.get("/findColleges",async (req,res)=>{
                                         state: new RegExp(state1,'i'),
                                         city: new RegExp(city1,'i'),
                                         course:new RegExp(course1,'i'),
-                                        exam:new RegExp(exams1,'i'),
+                                        exam:new RegExp(exams1),
                                         minPackage: {$gt: minPackage1},
                                         maxFees: {$lt: maxFees1}
                                         });
@@ -37,7 +37,7 @@ app.get("/findColleges",async (req,res)=>{
                                         state: new RegExp(state1,'i'),
                                         city: new RegExp(city1,'i'),
                                         course:new RegExp(course1,'i'),
-                                        exam:new RegExp(exams1,'i'),
+                                        exam:new RegExp(exams1),
                                         minPackage: {$gt: minPackage1},
                                         });
         console.log(found);
@@ -47,7 +47,7 @@ app.get("/findColleges",async (req,res)=>{
                                         state: new RegExp(state1,'i'),
                                         city: new RegExp(city1,'i'),
                                         course:new RegExp(course1,'i'),
-                                        exam:new RegExp(exams1,'i'),
+                                        exam:new RegExp(exams1),
                                         maxFees: {$lt: maxFees1},
                                         });
         console.log(found);
@@ -57,7 +57,7 @@ app.get("/findColleges",async (req,res)=>{
                                         state: new RegExp(state1,'i'),
                                         city: new RegExp(city1,'i'),
                                         course:new RegExp(course1,'i'),
-                                        exam:new RegExp(exams1,'i')
+                                        exam:new RegExp(exams1)
                                         
                                         });
         console.log(exams1);

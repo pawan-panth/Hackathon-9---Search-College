@@ -45,7 +45,7 @@ app.get("/findColleges",async (req,res)=>{
                                         city: new RegExp(city1,'i'),
                                         course:new RegExp(course1,'i'),
                                         exam:new RegExp(exams1,'i'),
-                                        maxFees: {$gt: maxFees1},
+                                        maxFees: {$lt: maxFees1},
                                         });
         console.log(found);
         res.send(found);

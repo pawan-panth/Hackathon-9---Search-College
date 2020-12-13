@@ -16,9 +16,9 @@ app.get("/findColleges",async (req,res)=>{
     let city1=req.query.city?req.query.city:".*";
     let course1 = req.query.course?req.query.course:".*";
     let exams1 = req.query.exam?req.query.exam:".*";
-    if(req.query.exam==="10 2"){
-        exams1= "10";
-    }
+    // if(req.query.exam==="10 2"){
+    //     exams1= "10";
+    // }
     let minPackage1 = req.query.minPackage?Number(req.query.minPackage):".*";
     let maxFees1 = req.query.maxFees? Number(req.query.maxFees):".*";
     if(minPackage1>0 && maxFees1>0){

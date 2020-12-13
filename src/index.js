@@ -14,7 +14,7 @@ app.get("/findColleges", async (req,res)=>{
     let state1= req.query.state?req.query.state:".*";
     let city1=req.query.city?req.query.city:".*";
     let course1 = req.query.course?req.query.course:".*";
-    let exams1 = req.query.exams? req.query.exams:".*";
+    let exams1 = req.query.exams? `^${req.query.exams}$`:".*";
     let minPackage1 = req.query.minPackage?Number(req.query.minPackage):".*";
     let maxFees1 = req.query.maxFees? Number(req.query.maxFees):".*";
     if(minPackage1>0 && maxFees1>0)
